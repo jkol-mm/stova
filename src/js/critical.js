@@ -1,1 +1,3 @@
-// Kritický JS soubor
+import { handleHeaderActions } from "./components/navigation";
+
+handleHeaderActions()

@@ -1,0 +1,275 @@
+@use '../../mixins' as *;
+@use '../../variables' as *;
+
+#cboxOverlay.siteAgreement {
+	z-index: 1005;
+}
+
+#colorbox.siteAgreement {
+	z-index: 1006;
+}
+
+#colorbox,
+#cboxOverlay,
+#cboxWrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	// overflow: hidden;
+	z-index: 10020;
+}
+
+#cboxWrapper {
+	max-width: none;
+}
+
+#cboxOverlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(#000, 0.6);
+	backdrop-filter: blur(5px);
+}
+
+#cboxMiddleLeft,
+#cboxBottomLeft {
+	clear: left;
+}
+
+#cboxContent {
+	position: relative;
+	overflow: hidden;
+	border-radius: 10px;
+}
+
+#cboxLoadedContent {
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+#cboxTitle {
+	margin: 0;
+}
+
+#cboxLoadingOverlay,
+#cboxLoadingGraphic {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#cboxPrevious,
+#cboxNext,
+#cboxClose,
+#cboxSlideshow {
+	cursor: pointer;
+}
+
+.cboxPhoto {
+	float: left;
+	margin: auto;
+	border: 0;
+	display: block;
+	height: auto !important;
+	-ms-interpolation-mode: bicubic;
+}
+
+.cboxIframe {
+	width: 100%;
+	height: 100%;
+	display: block;
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+#colorbox,
+#cboxContent,
+#cboxLoadedContent {
+	box-sizing: content-box;
+}
+
+/*
+    User Style:
+    Change the following styles to modify the appearance of Colorbox.  They are
+    ordered & tabbed in a way that represents the nesting of the generated HTML.
+*/
+#colorbox {
+	outline: 0;
+	box-shadow: 0 0 15px rgba(#000, 0.15);
+}
+
+#cboxContent {
+	background: #fff;
+}
+
+.cboxIframe {
+	background: #fff;
+}
+
+#cboxError {
+	padding: 50px;
+	border: 1px solid #ccc;
+}
+
+// #cboxLoadedContent {
+// 	padding: 1px;
+// }
+#cboxLoadingGraphic {
+	&::before {
+		content: '';
+		width: 60px;
+		height: 60px;
+		position: absolute;
+		z-index: 1;
+		left: 50%;
+		top: 50%;
+		margin: -30px 0 0 -30px;
+		border: 5px solid;
+		border-radius: 50%;
+		border-color: #fff #ccc #666 #000;
+		animation: loader 0.5s linear infinite;
+	}
+}
+
+@keyframes loader {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+#cboxLoadingOverlay {
+	background: #fff;
+}
+
+#cboxTitle {
+	position: absolute;
+	top: -22px;
+	left: 0;
+	color: #000;
+}
+
+#cboxCurrent {
+	position: absolute;
+	top: -22px;
+	right: 205px;
+	text-indent: -9999px;
+}
+
+/* these elements are buttons, and may need to have additional styles reset to avoid unwanted base styles */
+#cboxPrevious,
+#cboxNext,
+#cboxSlideshow,
+#cboxClose {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	overflow: visible;
+	text-indent: -9999px;
+	position: absolute;
+	background: none;
+}
+
+.mobile #cboxClose{
+	top: 14px;
+}
+
+#cboxClose {
+	position: absolute;
+	top: 18px;
+	right: 22px;
+	font-size: 0;
+	width: 24px;
+	height: 24px;
+	text-indent: 0;
+
+	&::before {
+		content: url('/assets/icons/cross-white.svg');
+		rotate: 45deg;
+		display: block;
+		width: 24px;
+		height: 24px;
+		line-height: 0;
+		transform: scale(2);
+	}
+}
+
+.type-index #cboxClose {
+	&::before {
+		filter: brightness(100000);
+	}
+}
+
+.content-modal {
+	padding: 20px;
+}
+
+/* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
+#cboxPrevious:active,
+#cboxNext:active,
+#cboxSlideshow:active,
+#cboxClose:active {
+	outline: 0;
+}
+
+.colorbox-html-content {
+	padding: 20px;
+}
+
+.site-agreement-buttons {
+	white-space: nowrap;
+	text-align: center;
+}
+
+.colorbox-msg {
+	margin: 20px;
+}
+
+#cboxTitle,
+#cboxCurrent {
+	display: none !important;
+}
+
+#cboxPrevious,
+#cboxNext {
+	outline: none;
+	top: 0;
+	width: 50%;
+	height: 100%;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		margin-top: -18px;
+		width: 36px;
+		height: 36px;
+		border: 2px solid $color-font;
+		border-style: none solid solid none;
+	}
+}
+
+#cboxPrevious {
+	left: 0;
+
+	&::before {
+		left: 30px;
+		transform: rotate(135deg);
+	}
+}
+
+#cboxNext {
+	right: 0;
+
+	&::before {
+		right: 30px;
+		transform: rotate(-45deg);
+	}
+}

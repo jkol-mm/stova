@@ -1,0 +1,9 @@
+@use "../mixins" as *;
+@use "../variables" as *;
+
+.homepage-group-title {
+    color: $color-black;
+    font-size: remMM(40);
+    font-weight: 600;
+    line-height: 1.3;
+}

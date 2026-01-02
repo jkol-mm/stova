@@ -1,1 +1,54 @@
-// Kritický SCSS soubor
+@use "./mixins" as *;
+@use "./variables" as *;
+
+@use './template/index-critical' as *;
+@use "./components/navigation" as *;
+@use "./components/header" as *;
+@use "./components/banners" as *;
+@use "./components/homepage" as *;
+
+@font-face {
+    font-family: 'Outfit';
+    src: url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+    font-weight: 100 900;
+}
+
+
+//temp
+.user-action {
+    display: none;
+}
+// .menu-helper {
+//     display: none;
+// }
+//end temp
+
+.container {
+    max-width: calc(1440px + 160px);
+}
+
+body {
+    font-family: "Outfit", sans-serif;
+    font-weight: 500;
+}
+
+button, input {
+    font-family: "Outfit", sans-serif;
+    font-weight: 500;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.sr-only {
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    clip: rect(0,0,0,0);
+    border: 0;
+}

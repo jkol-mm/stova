@@ -1,0 +1,288 @@
+@use '../../mixins' as *;
+@use '../../variables' as *;
+
+.popup-widget.cart-widget,
+.popup-widget.login-widget {
+	display: none;
+}
+
+.user-action {
+	position: sticky;
+	top: 0;
+	z-index: 1011;
+
+	.container {
+		position: relative;
+	}
+}
+
+.login-window-visible .popup-widget.login-widget {
+	display: flex;
+}
+
+.cart-window-visible .popup-widget.cart-widget {
+	display: block;
+}
+
+.admin-logged .popup-widget {
+	top: 100px;
+
+	&.cart-widget {
+		max-height: calc(100vh - 118px);
+	}
+}
+
+.ordering-process {
+	&.admin-logged {
+		.popup-widget {
+			top: 125px;
+		}
+	}
+
+	.popup-widget {
+		top: 98px;
+	}
+}
+
+body:has(#header.sticky) {
+	.user-action .popup-widget {
+		top: 70px;
+	}
+}
+
+#formLogin,
+#formLoginIncluded {
+	.login-wrapper {
+		display: flex;
+		flex-direction: row-reverse;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+	}
+
+	.social-login-buttons-divider {
+		text-align: center;
+		margin-bottom: 20px;
+		margin-top: 20px;
+	}
+}
+
+body:has(.site-msg.information) .popup-widget{
+
+	&.cart-widget{
+		max-height: calc(100vh - 200px);
+	}
+}
+
+.popup-widget {
+	position: absolute;
+	right: 0;
+	z-index: 1011;
+	padding: 40px;
+	//top: 72px;
+	//top: 12vh;
+	top: 16vh;
+	box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
+	background-color: var(--color-header-background);
+
+	h2 {
+		font-size: remmm($font-size-h4);
+		margin: 0 0 emmm(20, $font-size-h4);
+	}
+
+	&.cart-widget {
+		overflow-y: auto;
+		max-width: 493px;
+		max-height: calc(100vh - 200px);
+		right: 0;
+	}
+
+	input[type='email'] {
+		padding-left: 10px;
+		background-image: none;
+	}
+
+	input {
+		width: 100%;
+	}
+
+	.login-wrapper {
+		margin-top: 20px;
+	}
+
+	.login-btn {
+		display: flex;
+		align-items: center;
+	}
+}
+
+.password-helper {
+	a {
+		display: block;
+
+		&:not(:last-child) {
+			margin-bottom: 3px;
+		}
+	}
+}
+
+.cart-widget-inner {
+	display: flex;
+	flex-direction: column;
+
+	.cart-widget-products {
+		order: 1;
+	}
+
+	.popup-cart-summary {
+		order: 2;
+	}
+
+	.cart-widget-button {
+		order: 3;
+	}
+
+	.cart-free-shipping {
+		order: 4;
+
+		.free-shipping-strong {
+			color: #54bf00;
+			font-weight: 400;
+		}
+	}
+}
+
+.cart-widget-product {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px 16px;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+
+	.cart-widget-product-image {
+		order: 1;
+		flex: 0 1 60px;
+
+		img {
+			border-radius: 5px;
+		}
+	}
+
+	.cart-widget-product-name {
+		order: 2;
+		flex: 1 1 calc(100% - 60px - 16px);
+	}
+
+	.cart-widget-product-price {
+		order: 3;
+		margin-right: auto;
+		font-weight: 700;
+	}
+
+	.cart-widget-product-amount {
+		order: 5;
+	}
+
+	.cart-widget-product-delete {
+		order: 4;
+
+		.remove-item {
+			width: auto;
+			height: unset;
+		}
+
+		button {
+			&::before {
+				text-decoration: underline;
+				content: 'Odebrat';
+				color: $color-primary-blue;
+				font-size: remmm(13);
+			}
+		}
+	}
+
+	.cart-widget-product-unit {
+		display: none;
+	}
+
+	.cart-widget-product-variant {
+		display: block;
+		font-size: remmm(12);
+	}
+
+	.cart-widget-product-single-price {
+		font-size: remmm(12);
+		font-weight: 400;
+	}
+}
+
+.popup-cart-summary {
+	margin-bottom: 20px;
+}
+
+.popup-cart-summary-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	margin-bottom: 10px;
+}
+
+.popup-cart-summary-item-label {
+	font-size: remmm(16);
+}
+
+strong.popup-cart-summary-item-value {
+	font-size: remmm(28);
+}
+
+.cart-widget-button {
+	margin-bottom: 20px;
+
+	.btn.btn-conversion {
+		display: block;
+		text-align: center;
+
+		// font-size: remMM(20);
+		// padding: emMM(20, 20);
+		// font-weight: 700;
+	}
+}
+
+@media (width <= 991px) {
+	.popup-widget {
+		//top: 36px;
+		top: 12vh;
+
+
+		&.cart-widget {
+			max-height: calc(100vh - 136px);
+		}
+	}
+}
+
+@media (max-width: $breakpoint-mobile) {
+	.popup-widget {
+		padding: 30px 20px;
+		//top: 72px;
+		top: 15vh;
+
+		&.cart-widget {
+			max-height: calc(100vh - 120px);
+		}
+	}
+
+	.admin-logged .popup-widget {
+		top: 92px;
+	}
+}
+
+body:has(.site-msg.information) .popup-widget {
+	@media (max-width: $breakpoint-mobile) {
+		&.cart-widget{
+			max-height: calc(100vh - 170px);
+			
+		}
+	}
+}

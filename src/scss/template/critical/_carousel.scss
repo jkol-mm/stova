@@ -1,0 +1,192 @@
+@use '../../mixins' as *;
+@use '../../variables' as *;
+
+@keyframes carouselImgInit {
+	0% {
+		transform: scale(1.1);
+		opacity: 0;
+	}
+
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes carouselTextsInit {
+	0% {
+		transform: translateY(50px);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.before-carousel {
+	width: 100%;
+	overflow: hidden;
+}
+
+#carousel {
+	overflow: hidden;
+
+	.item {
+		a {
+			display: block;
+			width: 100%;
+			overflow: hidden;
+		}
+
+		img {
+			width: 100%;
+			display: block;
+			line-height: 1;
+			animation: carouselImgInit 1s ease-in-out forwards;
+		}
+	}
+
+	.extended-banner-title {
+		animation: carouselTextsInit 0.6s ease-in-out 0s forwards;
+	}
+
+	.extended-banner-text {
+		transform: translateY(50px);
+		opacity: 0;
+		animation: carouselTextsInit 0.6s ease-in-out 0.2s forwards;
+	}
+
+	.extended-banner-link {
+		transform: translateY(50px);
+		opacity: 0;
+		animation: carouselTextsInit 0.6s ease-in-out 0.4s forwards;
+	}
+}
+
+// .carousel-dots,
+// .slick-dots {
+//     padding: 0;
+//     margin: 0;
+//     list-style: none;
+//     display: flex;
+//     gap: 8px;
+//     position: absolute;
+//     bottom: 20px;
+//     & > li {
+//         display: block;
+//         width: 12px;
+//         height: 12px;
+//         border-radius: 50%;
+//         transition: all 0.15s ease-in-out;
+//         opacity: 0.3;
+//         mix-blend-mode: exclusion;
+//         &.dot-active {
+//             opacity: 1;
+//             mix-blend-mode: unset;
+//         }
+//     }
+// }
+.carousel-dots {
+	bottom: 43px;
+	right: 144px;
+}
+
+.carousel {
+	position: relative;
+}
+
+.carousel-inner {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+}
+
+.carousel-inner > .item {
+	display: none;
+	position: relative;
+	transition: 0.2s ease-in-out;
+}
+
+// @media all and (transform-3d), (-webkit-transform-3d) {
+// 	.carousel-inner > .item {
+// 		-webkit-transition: -webkit-transform 0.6s ease-in-out;
+// 		-moz-transition: -moz-transform 0.6s ease-in-out;
+// 		-o-transition: -o-transform 0.6s ease-in-out;
+// 		transition: transform 0.6s ease-in-out;
+// 		-webkit-backface-visibility: hidden;
+// 		-moz-backface-visibility: hidden;
+// 		backface-visibility: hidden;
+// 		-webkit-perspective: 1000px;
+// 		-moz-perspective: 1000px;
+// 		perspective: 1000px;
+// 	}
+// 	.carousel-inner > .item.next,
+// 	.carousel-inner > .item.active.right {
+// 		-webkit-transform: translate3d(100%, 0, 0);
+// 		transform: translate3d(100%, 0, 0);
+// 		left: 0;
+// 	}
+// 	.carousel-inner > .item.prev,
+// 	.carousel-inner > .item.active.left {
+// 		-webkit-transform: translate3d(-100%, 0, 0);
+// 		transform: translate3d(-100%, 0, 0);
+// 		left: 0;
+// 	}
+// 	.carousel-inner > .item.next.left,
+// 	.carousel-inner > .item.prev.right,
+// 	.carousel-inner > .item.active {
+// 		-webkit-transform: translate3d(0, 0, 0);
+// 		transform: translate3d(0, 0, 0);
+// 		left: 0;
+// 	}
+// }
+.carousel-inner > .active,
+.carousel-inner > .next,
+.carousel-inner > .prev {
+	display: block;
+}
+
+.carousel-inner > .active {
+	left: 0;
+}
+
+.carousel-inner > .next,
+.carousel-inner > .prev {
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.carousel-inner > .next {
+	// left: 100%;
+	opacity: 0;
+}
+
+.carousel-inner > .prev {
+	// left: -100%;
+	opacity: 0;
+}
+
+// .carousel-inner > .next.left,
+// .carousel-inner > .prev.right {
+// 	left: 0;
+// }
+.carousel-inner > .active.left {
+	// left: -100%;
+	opacity: 0;
+
+	img {
+		transform: scale(0.7);
+	}
+}
+
+.carousel-inner > .active.right {
+	// left: 100%;
+	opacity: 0;
+
+	img {
+		transform: scale(0.7);
+	}
+}

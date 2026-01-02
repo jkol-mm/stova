@@ -1,0 +1,126 @@
+@use '../mixins' as *;
+@use '../variables' as *;
+
+// CATEGORY
+// .products-inline:not(.dkLabVisitedProducts) {
+// 	.p {
+// 		display: flex;
+// 		align-items: center;
+// 		.image {
+// 			flex-shrink: 0;
+// 		}
+// 	}
+// 	.product.inactive {
+// 		display: none;
+// 	}
+// 	.price-standard-wrapper-placeholder {
+// 		display: none;
+// 	}
+// }
+// #category-header {
+// 	form {
+// 		overflow-x: auto;
+// 		overflow-y: hidden;
+// 	}
+// 	fieldset {
+// 		overflow: hidden;
+// 	}
+// }
+.dkLab-filters-wrapper .slider-wrapper:not(.dkLab-filters-wrapper__wrap) .slider-header {
+	display: flex;
+}
+
+.dkLab-filters-wrapper {
+	.slider-wrapper,
+	.filter-section {
+		&.dkLab-filters-wrapper__wrap h4 {
+			margin-bottom: 0;
+		}
+
+		&:not(.dkLab-filters-wrapper__wrap) h4 {
+			&::after {
+				transform: rotate(-135deg) !important;
+			}
+		}
+	}
+}
+
+.slider-wrapper {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+
+	h4 {
+		order: 1;
+	}
+
+	// .slider-content {
+	// 	order: 2;
+	// 	padding: 0 15px;
+	// 	height: 4px;
+	// 	margin-bottom: 20px;
+	// 	margin-top: 13px;
+	// 	background-color: transparent;
+	// }
+	.slider-header {
+		order: 3;
+
+		// display: flex;
+		justify-content: space-between;
+		gap: 10px;
+	}
+
+	.ui-slider {
+		height: 4px;
+		position: relative;
+		background-color: $color-font-05;
+
+		&::before {
+			height: 4px;
+		}
+	}
+
+	.ui-slider-range {
+		position: absolute;
+		top: 0;
+		height: 100%;
+		background-color: $color-accent;
+	}
+
+	.ui-slider-handle {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 20px;
+		height: 20px;
+		margin-left: -10px;
+		top: -8px;
+		background-color: $color-page-background;
+		border-radius: 50%;
+		border: 3px solid $color-accent;
+		cursor: pointer;
+
+		&::after {
+			display: none;
+		}
+	}
+}
+
+.advanced-filters-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+
+	&:not(:empty, :last-of-type) {
+		margin-bottom: 20px;
+	}
+
+	.advanced-parameter {
+		margin-right: 0;
+
+		.advanced-parameter-inner {
+			margin-bottom: 0;
+		}
+	}
+}

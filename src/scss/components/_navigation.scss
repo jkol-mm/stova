@@ -1,0 +1,20 @@
+@use "../mixins" as *;
+@use "../variables" as *;
+
+
+//temp
+#navigation, .menu-helper {
+    display: none;
+}
+//end temp
+
+.top-navigation-bar {
+    display: none;
+}
+
+#navigation {
+    
+    .menu-level-1 {
+        display: flex;
+    }
+}
