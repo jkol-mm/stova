@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "miranda-bender-vite": "^1.2.14"
+  },
+  "scripts": {
+    "dev": "npx vite",
+    "dev:blank": "BLANK=1 npx vite",
+    "build": "npm run format && npm run lint && npx vite build",
+    "lint:js": "npx eslint src/js || true",
+    "lint:scss": "npx stylelint \"src/scss/**/*.scss\" || true",
+    "lint": "npm run lint:js && npm run lint:scss",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "npx prettier --write \"src/**/*.{js,scss}\" && npx eslint src/js --fix && npx stylelint \"src/scss/**/*.scss\" --fix"
+  }
+}

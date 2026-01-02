@@ -1,0 +1,1 @@
+// Kritický JS soubor
